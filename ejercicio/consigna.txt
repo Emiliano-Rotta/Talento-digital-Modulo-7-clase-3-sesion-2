@@ -1,0 +1,85 @@
+En este ejercicio, crearás una aplicación Node.js para gestionar información de empleados y departamentos utilizando una base de datos PostgreSQL. Aplicarás consultas parametrizadas y consultas utilizando objetos. Se requiere seguir una estructura modular para facilitar la escalabilidad y el mantenimiento del proyecto.
+
+Configuración de la Base de Datos
+Crea una base de datos llamada empresa.
+
+En esta base de datos, crea las tablas departamentos y empleados utilizando las siguientes estructuras:
+
+Tabla departamentos:
+
+CREATE TABLE departamentos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE,
+    presupuesto NUMERIC NOT NULL
+);
+
+
+Tabla empleados:
+
+CREATE TABLE empleados (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    puesto VARCHAR(50) NOT NULL,
+    salario NUMERIC NOT NULL,
+    departamento_id INT REFERENCES departamentos(id) ON DELETE CASCADE
+);
+
+
+Inserta los siguientes datos:
+
+Datos de departamentos:
+
+INSERT INTO departamentos (nombre, presupuesto)
+VALUES
+('Recursos Humanos', 50000),
+('Tecnología', 200000),
+('Marketing', 75000);
+
+
+Datos de empleados:
+
+INSERT INTO empleados (nombre, puesto, salario, departamento_id)
+VALUES
+('Ana Pérez', 'Analista', 30000, 1),
+('Luis García', 'Desarrollador', 60000, 2),
+('María Gómez', 'Gerente', 100000, 2),
+('Jorge López', 'Diseñador', 40000, 3);
+
+
+
+Requerimientos de la Aplicación
+Crea una aplicación Node.js que cumpla con los siguientes requerimientos:
+
+-Obtener todos los empleados con sus datos completos y el nombre del departamento al que pertenecen.
+-Insertar un nuevo empleado con datos parametrizados.
+-Actualizar el salario de un empleado específico utilizando consultas con objetos.
+-Eliminar un empleado por su ID y mostrar cuántas filas fueron afectadas.
+
+-Utiliza las propiedades de la respuesta result de las consultas para mostrar:
+result.rows: Contenido devuelto por las consultas.
+result.fields: Información sobre las columnas.
+result.command: Tipo de comando ejecutado.
+result.rowCount: Número de filas afectadas.
+
+
+Restricciones y Buenas Prácticas
+La aplicación debe ser modularizada utilizando carpetas:
+controllers/: Lógica de negocio.
+db/: Configuración de la conexión.
+queries/: Consultas a la base de datos.
+Utiliza variables de entorno para los datos de conexión (archivo .env).
+Implementa las consultas utilizando async/await.
+Asegúrate de manejar y capturar errores en las consultas.
+
+
+empresa/
+├── controllers/
+│   ├── empleadosController.js
+├── db/
+│   ├── config.js
+├── queries/
+│   ├── empleadosQueries.js
+│   ├── departamentosQueries.js
+├── index.js
+├── .env
+└── package.json
