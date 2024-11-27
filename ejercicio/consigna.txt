@@ -29,14 +29,15 @@ Inserta los siguientes datos:
 
 Datos de departamentos:
 
+
 INSERT INTO departamentos (nombre, presupuesto)
 VALUES
 ('Recursos Humanos', 50000),
 ('Tecnología', 200000),
 ('Marketing', 75000);
 
-
 Datos de empleados:
+
 
 INSERT INTO empleados (nombre, puesto, salario, departamento_id)
 VALUES
@@ -50,12 +51,11 @@ VALUES
 Requerimientos de la Aplicación
 Crea una aplicación Node.js que cumpla con los siguientes requerimientos:
 
--Obtener todos los empleados con sus datos completos y el nombre del departamento al que pertenecen.
--Insertar un nuevo empleado con datos parametrizados.
--Actualizar el salario de un empleado específico utilizando consultas con objetos.
--Eliminar un empleado por su ID y mostrar cuántas filas fueron afectadas.
-
--Utiliza las propiedades de la respuesta result de las consultas para mostrar:
+Obtener todos los empleados con sus datos completos y el nombre del departamento al que pertenecen.
+Insertar un nuevo empleado con datos parametrizados.
+Actualizar el salario de un empleado específico utilizando consultas con objetos.
+Eliminar un empleado por su ID y mostrar cuántas filas fueron afectadas.
+Utiliza las propiedades de la respuesta result de las consultas para mostrar:
 result.rows: Contenido devuelto por las consultas.
 result.fields: Información sobre las columnas.
 result.command: Tipo de comando ejecutado.
